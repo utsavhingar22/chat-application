@@ -277,79 +277,83 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  TextButton(
-                    onPressed: () {
-                      HapticFeedback.lightImpact();
-                      Navigator.pop(context);
-                    },
-                    style: TextButton.styleFrom(
-                      padding: const EdgeInsets.symmetric(horizontal: 28, vertical: 14),
-                    ),
-                    child: Text(
-                      'Cancel',
-                      style: TextStyle(color: Colors.grey[700], fontSize: 16, fontWeight: FontWeight.w500),
+                  Flexible(
+                    child: TextButton(
+                      onPressed: () {
+                        HapticFeedback.lightImpact();
+                        Navigator.pop(context);
+                      },
+                      style: TextButton.styleFrom(
+                        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
+                      ),
+                      child: Text(
+                        'Cancel',
+                        style: TextStyle(color: Colors.grey[700], fontSize: 16, fontWeight: FontWeight.w500),
+                      ),
                     ),
                   ),
-                  const SizedBox(width: 12),
-                  Container(
-                    decoration: BoxDecoration(
-                      gradient: const LinearGradient(
-                        colors: [Color(0xFF667EEA), Color(0xFF764BA2)],
-                      ),
-                      borderRadius: BorderRadius.circular(16),
-                      boxShadow: [
-                        BoxShadow(
-                          color: const Color(0xFF667EEA).withOpacity(0.3),
-                          blurRadius: 12,
-                          offset: const Offset(0, 4),
+                  const SizedBox(width: 8),
+                  Flexible(
+                    child: Container(
+                      decoration: BoxDecoration(
+                        gradient: const LinearGradient(
+                          colors: [Color(0xFF667EEA), Color(0xFF764BA2)],
                         ),
-                      ],
-                    ),
-                    child: ElevatedButton(
-                      onPressed: () {
-                        if (nameController.text.trim().isNotEmpty) {
-                          widget.userController.addUser(nameController.text.trim());
-                          Navigator.pop(context);
-                          HapticFeedback.mediumImpact();
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              content: Row(
-                                children: [
-                                  Container(
-                                    padding: const EdgeInsets.all(8),
-                                    decoration: BoxDecoration(
-                                      color: Colors.white.withOpacity(0.2),
-                                      shape: BoxShape.circle,
-                                    ),
-                                    child: const Icon(Icons.check_rounded, color: Colors.white, size: 20),
-                                  ),
-                                  const SizedBox(width: 12),
-                                  Expanded(
-                                    child: Text(
-                                      'Contact added: ${nameController.text.trim()}',
-                                      style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              duration: const Duration(seconds: 2),
-                              behavior: SnackBarBehavior.floating,
-                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-                              backgroundColor: const Color(0xFF667EEA),
-                              margin: const EdgeInsets.all(16),
-                            ),
-                          );
-                          setState(() {});
-                        }
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.transparent,
-                        shadowColor: Colors.transparent,
-                        foregroundColor: Colors.white,
-                        padding: const EdgeInsets.symmetric(horizontal: 36, vertical: 16),
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+                        borderRadius: BorderRadius.circular(16),
+                        boxShadow: [
+                          BoxShadow(
+                            color: const Color(0xFF667EEA).withOpacity(0.3),
+                            blurRadius: 12,
+                            offset: const Offset(0, 4),
+                          ),
+                        ],
                       ),
-                      child: const Text('Add Contact', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600)),
+                      child: ElevatedButton(
+                        onPressed: () {
+                          if (nameController.text.trim().isNotEmpty) {
+                            widget.userController.addUser(nameController.text.trim());
+                            Navigator.pop(context);
+                            HapticFeedback.mediumImpact();
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Row(
+                                  children: [
+                                    Container(
+                                      padding: const EdgeInsets.all(8),
+                                      decoration: BoxDecoration(
+                                        color: Colors.white.withOpacity(0.2),
+                                        shape: BoxShape.circle,
+                                      ),
+                                      child: const Icon(Icons.check_rounded, color: Colors.white, size: 20),
+                                    ),
+                                    const SizedBox(width: 12),
+                                    Expanded(
+                                      child: Text(
+                                        'Contact added: ${nameController.text.trim()}',
+                                        style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                duration: const Duration(seconds: 2),
+                                behavior: SnackBarBehavior.floating,
+                                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+                                backgroundColor: const Color(0xFF667EEA),
+                                margin: const EdgeInsets.all(16),
+                              ),
+                            );
+                            setState(() {});
+                          }
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.transparent,
+                          shadowColor: Colors.transparent,
+                          foregroundColor: Colors.white,
+                          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+                        ),
+                        child: const Text('Add Contact', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600)),
+                      ),
                     ),
                   ),
                 ],
@@ -419,7 +423,7 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
       ),
       floatingActionButton: _selectedTabIndex == 0 && _selectedBottomNavIndex == 0
           ? Container(
-              margin: const EdgeInsets.only(bottom: 80),
+              margin: const EdgeInsets.only(bottom: 20),
               child: Container(
                 decoration: BoxDecoration(
                   gradient: const LinearGradient(

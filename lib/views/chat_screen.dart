@@ -132,7 +132,7 @@ class _ChatScreenState extends State<ChatScreen> {
                     decoration: BoxDecoration(
                       gradient: isSender
                           ? const LinearGradient(
-                              colors: [Color(0xFF6366F1), Color(0xFF818CF8)],
+                              colors: [Color(0xFF667EEA), Color(0xFF764BA2)],
                               begin: Alignment.topLeft,
                               end: Alignment.bottomRight,
                             )
@@ -157,7 +157,7 @@ class _ChatScreenState extends State<ChatScreen> {
                       child: SelectableText(
                         message.text,
                         style: TextStyle(
-                          color: isSender ? Colors.white : const Color(0xFF1A1A1A),
+                          color: isSender ? Colors.white : const Color(0xFF1F2937),
                           fontSize: 16,
                           height: 1.5,
                           letterSpacing: -0.2,
@@ -187,7 +187,7 @@ class _ChatScreenState extends State<ChatScreen> {
                   shape: BoxShape.circle,
                   boxShadow: [
                     BoxShadow(
-                      color: const Color(0xFF6366F1).withOpacity(0.2),
+                      color: const Color(0xFF667EEA).withOpacity(0.2),
                       blurRadius: 8,
                       offset: const Offset(0, 2),
                     ),
@@ -211,7 +211,7 @@ class _ChatScreenState extends State<ChatScreen> {
     final messages = widget.messageController.getMessagesForUser(widget.user.id);
 
     return Scaffold(
-      backgroundColor: const Color(0xFFF0F2F5),
+      backgroundColor: const Color(0xFFF5F7FA),
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.white,
@@ -226,7 +226,7 @@ class _ChatScreenState extends State<ChatScreen> {
             shape: BoxShape.circle,
           ),
           child: IconButton(
-            icon: const Icon(Icons.arrow_back_ios_new_rounded, color: Color(0xFF1A1A1A), size: 18),
+            icon: const Icon(Icons.arrow_back_ios_new_rounded, color: Color(0xFF1F2937), size: 18),
             onPressed: () {
               HapticFeedback.lightImpact();
               Navigator.pop(context);
@@ -287,7 +287,7 @@ class _ChatScreenState extends State<ChatScreen> {
                     style: const TextStyle(
                       fontSize: 17,
                       fontWeight: FontWeight.w600,
-                      color: Color(0xFF1A1A1A),
+                      color: Color(0xFF1F2937),
                       letterSpacing: -0.3,
                     ),
                   ),
@@ -315,7 +315,7 @@ class _ChatScreenState extends State<ChatScreen> {
               shape: BoxShape.circle,
             ),
             child: IconButton(
-              icon: const Icon(Icons.more_vert_rounded, color: Color(0xFF1A1A1A), size: 20),
+              icon: const Icon(Icons.more_vert_rounded, color: Color(0xFF1F2937), size: 20),
               onPressed: () {
                 HapticFeedback.lightImpact();
               },
@@ -363,7 +363,7 @@ class _ChatScreenState extends State<ChatScreen> {
                           style: TextStyle(
                             fontSize: 24,
                             fontWeight: FontWeight.bold,
-                            color: Color(0xFF1A1A1A),
+                            color: Color(0xFF1F2937),
                             letterSpacing: -0.5,
                           ),
                         ),
@@ -388,7 +388,7 @@ class _ChatScreenState extends State<ChatScreen> {
                           padding: EdgeInsets.all(16),
                           child: Center(
                             child: CircularProgressIndicator(
-                              valueColor: AlwaysStoppedAnimation<Color>(Color(0xFF6366F1)),
+                              valueColor: AlwaysStoppedAnimation<Color>(Color(0xFF667EEA)),
                             ),
                           ),
                         );
@@ -416,7 +416,7 @@ class _ChatScreenState extends State<ChatScreen> {
                   Expanded(
                     child: Container(
                       decoration: BoxDecoration(
-                        color: const Color(0xFFF0F2F5),
+                        color: const Color(0xFFF5F7FA),
                         borderRadius: BorderRadius.circular(28),
                         border: Border.all(color: Colors.grey[200]!),
                       ),
@@ -437,10 +437,10 @@ class _ChatScreenState extends State<ChatScreen> {
                         maxLines: null,
                         textInputAction: TextInputAction.send,
                         onSubmitted: (_) => _sendMessage(),
-                        style: const TextStyle(
-                          fontSize: 16,
-                          color: Color(0xFF1A1A1A),
-                        ),
+                          style: const TextStyle(
+                            fontSize: 16,
+                            color: Color(0xFF1F2937),
+                          ),
                       ),
                     ),
                   ),
@@ -448,14 +448,14 @@ class _ChatScreenState extends State<ChatScreen> {
                   Container(
                     decoration: BoxDecoration(
                       gradient: const LinearGradient(
-                        colors: [Color(0xFF6366F1), Color(0xFF818CF8)],
+                        colors: [Color(0xFF667EEA), Color(0xFF764BA2)],
                         begin: Alignment.topLeft,
                         end: Alignment.bottomRight,
                       ),
                       shape: BoxShape.circle,
                       boxShadow: [
                         BoxShadow(
-                          color: const Color(0xFF6366F1).withOpacity(0.4),
+                          color: const Color(0xFF667EEA).withOpacity(0.4),
                           blurRadius: 16,
                           offset: const Offset(0, 6),
                         ),

@@ -50,8 +50,8 @@ class ChatHistoryTab extends StatelessWidget {
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                   colors: [
-                    const Color(0xFF4CAF50).withOpacity(0.1),
-                    const Color(0xFF66BB6A).withOpacity(0.05),
+                    const Color(0xFF667EEA).withOpacity(0.1),
+                    const Color(0xFF764BA2).withOpacity(0.05),
                   ],
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
@@ -61,7 +61,7 @@ class ChatHistoryTab extends StatelessWidget {
               child: const Icon(
                 Icons.chat_bubble_outline_rounded,
                 size: 96,
-                color: Color(0xFF4CAF50),
+                color: Color(0xFF667EEA),
               ),
             ),
             const SizedBox(height: 40),
@@ -86,17 +86,17 @@ class ChatHistoryTab extends StatelessWidget {
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
               decoration: BoxDecoration(
-                color: const Color(0xFF4CAF50).withOpacity(0.1),
+                color: const Color(0xFF667EEA).withOpacity(0.1),
                 borderRadius: BorderRadius.circular(16),
                 border: Border.all(
-                  color: const Color(0xFF4CAF50).withOpacity(0.2),
+                  color: const Color(0xFF667EEA).withOpacity(0.2),
                   width: 1,
                 ),
               ),
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Icon(Icons.info_outline_rounded, color: const Color(0xFF4CAF50), size: 20),
+                  Icon(Icons.info_outline_rounded, color: const Color(0xFF667EEA), size: 20),
                   const SizedBox(width: 10),
                   Text(
                     'Your conversations will appear here',
@@ -165,7 +165,7 @@ class ChatHistoryTab extends StatelessWidget {
                               shape: BoxShape.circle,
                               boxShadow: [
                                 BoxShadow(
-                                  color: const Color(0xFF4CAF50).withOpacity(0.25),
+                                  color: const Color(0xFF667EEA).withOpacity(0.25),
                                   blurRadius: 12,
                                   offset: const Offset(0, 4),
                                 ),
@@ -228,7 +228,7 @@ class ChatHistoryTab extends StatelessWidget {
                                     style: TextStyle(
                                       fontSize: 18,
                                       fontWeight: chat.unreadCount > 0 ? FontWeight.bold : FontWeight.w600,
-                                      color: const Color(0xFF1A1A1A),
+                                      color: const Color(0xFF1F2937),
                                       letterSpacing: -0.3,
                                     ),
                                   ),
