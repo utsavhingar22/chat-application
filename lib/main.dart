@@ -35,23 +35,25 @@ class ChatApp extends StatelessWidget {
       title: 'Chat Application',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primaryColor: const Color(0xFF6366F1),
-        scaffoldBackgroundColor: const Color(0xFFF8F9FA),
+        primaryColor: const Color(0xFF667EEA),
+        scaffoldBackgroundColor: const Color(0xFFF5F7FA),
         appBarTheme: const AppBarTheme(
           backgroundColor: Colors.white,
           elevation: 0,
-          iconTheme: IconThemeData(color: Color(0xFF1A1A1A)),
+          iconTheme: IconThemeData(color: Color(0xFF1F2937)),
           systemOverlayStyle: SystemUiOverlayStyle(
             statusBarColor: Colors.transparent,
             statusBarIconBrightness: Brightness.dark,
           ),
         ),
         colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color(0xFF6366F1),
+          seedColor: const Color(0xFF667EEA),
           brightness: Brightness.light,
+          primary: const Color(0xFF667EEA),
+          secondary: const Color(0xFF764BA2),
         ),
-        useMaterial3: false,
-        fontFamily: 'SF Pro Display', // Modern iOS-like font
+        useMaterial3: true,
+        fontFamily: 'Inter',
       ),
       initialRoute: '/',
       routes: {

@@ -149,9 +149,9 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
     final nameController = TextEditingController();
     showDialog(
       context: context,
-      barrierColor: Colors.black54,
+      barrierColor: Colors.black.withOpacity(0.5),
       builder: (context) => Dialog(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(28)),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(32)),
         backgroundColor: Colors.white,
         child: Padding(
           padding: const EdgeInsets.all(32),
@@ -159,18 +159,18 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
             mainAxisSize: MainAxisSize.min,
             children: [
               Container(
-                padding: const EdgeInsets.all(20),
+                padding: const EdgeInsets.all(24),
                 decoration: BoxDecoration(
                   gradient: const LinearGradient(
-                    colors: [Color(0xFF6366F1), Color(0xFF818CF8)],
+                    colors: [Color(0xFF667EEA), Color(0xFF764BA2)],
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
                   ),
                   shape: BoxShape.circle,
                   boxShadow: [
                     BoxShadow(
-                      color: const Color(0xFF6366F1).withOpacity(0.3),
-                      blurRadius: 20,
+                      color: const Color(0xFF667EEA).withOpacity(0.4),
+                      blurRadius: 24,
                       offset: const Offset(0, 8),
                     ),
                   ],
@@ -178,16 +178,16 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
                 child: const Icon(
                   Icons.person_add_rounded,
                   color: Colors.white,
-                  size: 36,
+                  size: 40,
                 ),
               ),
-              const SizedBox(height: 24),
+              const SizedBox(height: 28),
               const Text(
-                'Add New User',
+                'Add New Contact',
                 style: TextStyle(
-                  fontSize: 26,
+                  fontSize: 28,
                   fontWeight: FontWeight.bold,
-                  color: Color(0xFF1A1A1A),
+                  color: Color(0xFF1F2937),
                   letterSpacing: -0.5,
                 ),
               ),
@@ -199,33 +199,38 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
                   color: Colors.grey[600],
                 ),
               ),
-              const SizedBox(height: 28),
+              const SizedBox(height: 32),
               TextField(
                 controller: nameController,
                 decoration: InputDecoration(
-                  hintText: 'User name',
+                  hintText: 'Contact name',
                   prefixIcon: Container(
                     margin: const EdgeInsets.all(12),
-                    padding: const EdgeInsets.all(8),
+                    padding: const EdgeInsets.all(10),
                     decoration: BoxDecoration(
-                      color: const Color(0xFF6366F1).withOpacity(0.1),
-                      borderRadius: BorderRadius.circular(10),
+                      gradient: LinearGradient(
+                        colors: [
+                          const Color(0xFF667EEA).withOpacity(0.1),
+                          const Color(0xFF764BA2).withOpacity(0.1),
+                        ],
+                      ),
+                      borderRadius: BorderRadius.circular(12),
                     ),
-                    child: const Icon(Icons.person_outline_rounded, color: Color(0xFF6366F1), size: 20),
+                    child: const Icon(Icons.person_outline_rounded, color: Color(0xFF667EEA), size: 22),
                   ),
                   border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(18),
+                    borderRadius: BorderRadius.circular(20),
                     borderSide: BorderSide(color: Colors.grey[300]!),
                   ),
                   enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(18),
+                    borderRadius: BorderRadius.circular(20),
                     borderSide: BorderSide(color: Colors.grey[300]!),
                   ),
                   focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(18),
-                    borderSide: const BorderSide(color: Color(0xFF6366F1), width: 2),
+                    borderRadius: BorderRadius.circular(20),
+                    borderSide: const BorderSide(color: Color(0xFF667EEA), width: 2),
                   ),
-                  contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 18),
+                  contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
                   filled: true,
                   fillColor: Colors.grey[50],
                 ),
@@ -251,7 +256,7 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
                             const SizedBox(width: 12),
                             Expanded(
                               child: Text(
-                                'User added: ${nameController.text.trim()}',
+                                'Contact added: ${nameController.text.trim()}',
                                 style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
                               ),
                             ),
@@ -260,7 +265,7 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
                         duration: const Duration(seconds: 2),
                         behavior: SnackBarBehavior.floating,
                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-                        backgroundColor: const Color(0xFF6366F1),
+                        backgroundColor: const Color(0xFF667EEA),
                         margin: const EdgeInsets.all(16),
                       ),
                     );
@@ -268,7 +273,7 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
                   }
                 },
               ),
-              const SizedBox(height: 28),
+              const SizedBox(height: 32),
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
@@ -286,52 +291,66 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
                     ),
                   ),
                   const SizedBox(width: 12),
-                  ElevatedButton(
-                    onPressed: () {
-                      if (nameController.text.trim().isNotEmpty) {
-                        widget.userController.addUser(nameController.text.trim());
-                        Navigator.pop(context);
-                        HapticFeedback.mediumImpact();
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            content: Row(
-                              children: [
-                                Container(
-                                  padding: const EdgeInsets.all(8),
-                                  decoration: BoxDecoration(
-                                    color: Colors.white.withOpacity(0.2),
-                                    shape: BoxShape.circle,
-                                  ),
-                                  child: const Icon(Icons.check_rounded, color: Colors.white, size: 20),
-                                ),
-                                const SizedBox(width: 12),
-                                Expanded(
-                                  child: Text(
-                                    'User added: ${nameController.text.trim()}',
-                                    style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            duration: const Duration(seconds: 2),
-                            behavior: SnackBarBehavior.floating,
-                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-                            backgroundColor: const Color(0xFF6366F1),
-                            margin: const EdgeInsets.all(16),
-                          ),
-                        );
-                        setState(() {});
-                      }
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xFF6366F1),
-                      foregroundColor: Colors.white,
-                      padding: const EdgeInsets.symmetric(horizontal: 36, vertical: 16),
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-                      elevation: 0,
-                      shadowColor: Colors.transparent,
+                  Container(
+                    decoration: BoxDecoration(
+                      gradient: const LinearGradient(
+                        colors: [Color(0xFF667EEA), Color(0xFF764BA2)],
+                      ),
+                      borderRadius: BorderRadius.circular(16),
+                      boxShadow: [
+                        BoxShadow(
+                          color: const Color(0xFF667EEA).withOpacity(0.3),
+                          blurRadius: 12,
+                          offset: const Offset(0, 4),
+                        ),
+                      ],
                     ),
-                    child: const Text('Add User', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600)),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        if (nameController.text.trim().isNotEmpty) {
+                          widget.userController.addUser(nameController.text.trim());
+                          Navigator.pop(context);
+                          HapticFeedback.mediumImpact();
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Row(
+                                children: [
+                                  Container(
+                                    padding: const EdgeInsets.all(8),
+                                    decoration: BoxDecoration(
+                                      color: Colors.white.withOpacity(0.2),
+                                      shape: BoxShape.circle,
+                                    ),
+                                    child: const Icon(Icons.check_rounded, color: Colors.white, size: 20),
+                                  ),
+                                  const SizedBox(width: 12),
+                                  Expanded(
+                                    child: Text(
+                                      'Contact added: ${nameController.text.trim()}',
+                                      style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              duration: const Duration(seconds: 2),
+                              behavior: SnackBarBehavior.floating,
+                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+                              backgroundColor: const Color(0xFF667EEA),
+                              margin: const EdgeInsets.all(16),
+                            ),
+                          );
+                          setState(() {});
+                        }
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.transparent,
+                        shadowColor: Colors.transparent,
+                        foregroundColor: Colors.white,
+                        padding: const EdgeInsets.symmetric(horizontal: 36, vertical: 16),
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+                      ),
+                      child: const Text('Add Contact', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600)),
+                    ),
                   ),
                 ],
               ),
@@ -345,32 +364,32 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF8F9FA),
+      backgroundColor: const Color(0xFFF5F7FA),
       appBar: _showAppBar
           ? AppBar(
               elevation: 0,
               backgroundColor: Colors.white,
               systemOverlayStyle: const SystemUiOverlayStyle(
-                statusBarColor: Colors.white,
+                statusBarColor: Colors.transparent,
                 statusBarIconBrightness: Brightness.dark,
               ),
               title: const Text(
                 'Messages',
                 style: TextStyle(
-                  color: Color(0xFF1A1A1A),
-                  fontSize: 28,
+                  color: Color(0xFF1F2937),
+                  fontSize: 30,
                   fontWeight: FontWeight.bold,
-                  letterSpacing: -0.8,
+                  letterSpacing: -1,
                 ),
               ),
               bottom: PreferredSize(
-                preferredSize: const Size.fromHeight(85),
+                preferredSize: const Size.fromHeight(90),
                 child: Padding(
                   padding: const EdgeInsets.only(bottom: 20),
                   child: CustomTabSwitcher(
                     selectedIndex: _selectedTabIndex,
                     onTabChanged: _onTabChanged,
-                    tabs: const ['Users', 'Chat History'],
+                    tabs: const ['Contacts', 'History'],
                   ),
                 ),
               ),
@@ -401,20 +420,46 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
       floatingActionButton: _selectedTabIndex == 0 && _selectedBottomNavIndex == 0
           ? Container(
               margin: const EdgeInsets.only(bottom: 80),
-              child: FloatingActionButton.extended(
-                onPressed: () {
-                  HapticFeedback.mediumImpact();
-                  _showAddUserDialog();
-                },
-                backgroundColor: const Color(0xFF6366F1),
-                elevation: 8,
-                icon: const Icon(Icons.add_rounded, color: Colors.white, size: 26),
-                label: const Text(
-                  'Add User',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600,
+              child: Container(
+                decoration: BoxDecoration(
+                  gradient: const LinearGradient(
+                    colors: [Color(0xFF667EEA), Color(0xFF764BA2)],
+                  ),
+                  borderRadius: BorderRadius.circular(28),
+                  boxShadow: [
+                    BoxShadow(
+                      color: const Color(0xFF667EEA).withOpacity(0.4),
+                      blurRadius: 20,
+                      offset: const Offset(0, 8),
+                    ),
+                  ],
+                ),
+                child: Material(
+                  color: Colors.transparent,
+                  child: InkWell(
+                    onTap: () {
+                      HapticFeedback.mediumImpact();
+                      _showAddUserDialog();
+                    },
+                    borderRadius: BorderRadius.circular(28),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+                      child: const Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Icon(Icons.add_rounded, color: Colors.white, size: 24),
+                          SizedBox(width: 8),
+                          Text(
+                            'Add Contact',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
                   ),
                 ),
               ),
@@ -427,21 +472,20 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
             color: Colors.white,
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withOpacity(0.08),
-                blurRadius: 24,
-                offset: const Offset(0, -4),
+                color: Colors.black.withOpacity(0.06),
+                blurRadius: 20,
+                offset: const Offset(0, -2),
               ),
             ],
           ),
           child: Container(
-            height: 68,
-            padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 6),
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                _buildNavItem(Icons.chat_bubble_outline_rounded, Icons.chat_bubble_rounded, 'Home', 0),
-                _buildNavItem(Icons.local_offer_outlined, Icons.local_offer, 'Offers', 1),
-                _buildNavItem(Icons.settings_outlined, Icons.settings, 'Settings', 2),
+                _buildNavItem(Icons.home_outlined, Icons.home, 'Home', 0),
+                _buildNavItem(Icons.explore_outlined, Icons.explore, 'Explore', 1),
+                _buildNavItem(Icons.person_outline, Icons.person, 'Profile', 2),
               ],
             ),
           ),
@@ -467,45 +511,61 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
               Navigator.pushNamed(context, '/settings');
             }
           },
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(20),
           child: Container(
             padding: const EdgeInsets.symmetric(vertical: 2),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                AnimatedContainer(
-                  duration: const Duration(milliseconds: 250),
-                  curve: Curves.easeInOut,
-                  padding: const EdgeInsets.all(6),
-                  decoration: BoxDecoration(
-                    color: isSelected
-                        ? const Color(0xFF6366F1).withOpacity(0.15)
-                        : Colors.transparent,
-                    borderRadius: BorderRadius.circular(14),
-                  ),
-                  child: AnimatedSwitcher(
-                    duration: const Duration(milliseconds: 200),
-                    child: Icon(
-                      isSelected ? activeIcon : icon,
-                      key: ValueKey(isSelected),
-                      color: isSelected ? const Color(0xFF6366F1) : Colors.grey[500],
-                      size: 22,
+                Flexible(
+                  child: AnimatedContainer(
+                    duration: const Duration(milliseconds: 250),
+                    curve: Curves.easeInOut,
+                    padding: const EdgeInsets.all(6),
+                    decoration: BoxDecoration(
+                      gradient: isSelected
+                          ? const LinearGradient(
+                              colors: [Color(0xFF667EEA), Color(0xFF764BA2)],
+                            )
+                          : null,
+                      color: isSelected ? null : Colors.transparent,
+                      borderRadius: BorderRadius.circular(14),
+                      boxShadow: isSelected
+                          ? [
+                              BoxShadow(
+                                color: const Color(0xFF667EEA).withOpacity(0.3),
+                                blurRadius: 10,
+                                offset: const Offset(0, 3),
+                              ),
+                            ]
+                          : null,
+                    ),
+                    child: AnimatedSwitcher(
+                      duration: const Duration(milliseconds: 200),
+                      child: Icon(
+                        isSelected ? activeIcon : icon,
+                        key: ValueKey(isSelected),
+                        color: isSelected ? Colors.white : Colors.grey[500],
+                        size: 22,
+                      ),
                     ),
                   ),
                 ),
                 const SizedBox(height: 2),
-                AnimatedDefaultTextStyle(
-                  duration: const Duration(milliseconds: 200),
-                  style: TextStyle(
-                    fontSize: 10,
-                    fontWeight: isSelected ? FontWeight.w600 : FontWeight.normal,
-                    color: isSelected ? const Color(0xFF6366F1) : Colors.grey[600],
-                  ),
-                  child: Text(
-                    label,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
+                Flexible(
+                  child: AnimatedDefaultTextStyle(
+                    duration: const Duration(milliseconds: 200),
+                    style: TextStyle(
+                      fontSize: 10,
+                      fontWeight: isSelected ? FontWeight.w600 : FontWeight.normal,
+                      color: isSelected ? const Color(0xFF667EEA) : Colors.grey[600],
+                    ),
+                    child: Text(
+                      label,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
                   ),
                 ),
               ],
