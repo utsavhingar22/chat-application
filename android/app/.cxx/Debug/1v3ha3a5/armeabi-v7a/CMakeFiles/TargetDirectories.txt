@@ -1,0 +1,2 @@
+/Users/utsavhingar/chat_application/android/app/.cxx/Debug/1v3ha3a5/armeabi-v7a/CMakeFiles/edit_cache.dir
+/Users/utsavhingar/chat_application/android/app/.cxx/Debug/1v3ha3a5/armeabi-v7a/CMakeFiles/rebuild_cache.dir
